@@ -24,7 +24,7 @@ footer{
 }
 
 main, footer, .page{
-    padding: clamp(1rem, 5vw, 3rem);
+    padding: 0 clamp(1rem, 7vw, 5rem);
 }
 .frame{
     display: flex;
@@ -46,7 +46,9 @@ main, footer, .page{
     border: .1rem solid var(--main-black);
 }
 
-
+#theme-frame{
+    height: max(15vh, 8rem);
+}
 #theme-button:hover{
     background: var(--main-black);
     color: var(--main-white);
@@ -69,13 +71,17 @@ main, footer, .page{
 }
 
 #subtitle-frame{
+    height: max(50vh, 25rem);
     text-align: center;
 }
 .subtitle{
     font-size: clamp(2rem, 5vw, 4rem);
-    line-height: clamp(4rem, 10vh, 6rem);
+    line-height: clamp(6rem, 10vh, 10rem);
 }
 
+#pick-foe-frame{
+    height: max(20vh, 10rem);
+}
 #pick-friend-button, #pick-ai-button{
     width: clamp(10rem, 20vw, 14rem);
     height: clamp(3rem, 20vh, 5rem);
@@ -102,7 +108,9 @@ main, footer, .page{
     color: var(--main-white);
 }
 
-
+#cprg-frame{
+    height: max(15vh, 8rem);
+}
 .cprg-notice{
     text-align: center;
     font-size: clamp(.8rem, 2vw, 1rem);
