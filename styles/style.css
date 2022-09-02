@@ -10,7 +10,7 @@ html{
     font-size: 10px;
 }
 
-#splash-page, #game-page, #theme-dropdown, #ai-dropdown{
+#splash-page, #game-page{
     display: none;
 }
 
@@ -45,7 +45,9 @@ main, footer, .page{
     cursor: pointer;
 }
 .dropdown{
+    z-index: 1;
     width: clamp(10rem, 20vw, 12rem);
+    background: var(--main-white);
     border: .1rem solid var(--main-black);
 }
 .dropdown > li:hover{
