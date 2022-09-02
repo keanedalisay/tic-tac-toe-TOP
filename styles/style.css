@@ -99,3 +99,14 @@ footer{
     background: var(--main-black);
     color: var(--main-white);
 }
+
+
+.cprg-notice{
+    font-size: clamp(.8rem, 2vw, 1rem);
+}
+.link{
+    text-decoration: none;
+}
+.link:hover{
+    text-decoration: underline solid var(--main-black);
+}
