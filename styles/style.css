@@ -25,6 +25,12 @@ footer{
     height: max(10vh, 10rem);
 }
 
+.frame{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
 .button{
     width: clamp(10rem, 20vw, 12rem);
     height: clamp(3rem, 20vh, 4rem);
@@ -39,12 +45,6 @@ footer{
     border: .1rem solid var(--main-black);
 }
 
-#theme-frame{
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-}
 #theme-button:hover{
     background: var(--main-black);
     color: var(--main-white);
@@ -67,9 +67,6 @@ footer{
 }
 
 #subtitle-frame{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
 }
 .subtitle{
