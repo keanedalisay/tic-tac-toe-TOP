@@ -24,3 +24,9 @@ footer{
     width: min(100%, 78rem);
     height: max(10vh, 10rem);
 }
+
+.button{
+    background: var(--main-white);
+    border: none;
+    border-radius: 1rem;
+}
