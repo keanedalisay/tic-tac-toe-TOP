@@ -160,3 +160,57 @@ footer{
     line-height: clamp(6rem, 10vh, 10rem);
 }
 
+#game-page{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 100%;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--main-white);
+}
+
+.div-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cntrl-board-frame{
+    height: max(15vh, 5rem);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#pick-x-button, #pick-o-button{
+    width: clamp(5rem, 10vw, 7rem);
+    height: clamp(5rem, 10vw, 7rem);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+#pick-x-button::after, #pick-o-button::after{
+    content: '';
+    position: absolute;
+    margin-top: clamp(2rem, 5vw, 3rem);
+    width: clamp(5rem, 10vw, 7rem);
+    height: .3rem;
+    display: block;
+}
+#pick-x-button:hover, #pick-o-button:hover{
+    cursor: pointer;
+}
+#pick-x-button:hover:after, #pick-o-button:hover:after{
+    background: var(--main-gold);
+}
+#menu-button:hover{
+    background: var(--main-black);
+    color: var(--main-white);
+}
+
+
+#game-board-frame{
+    height: max(40vh, 25rem);
+}
