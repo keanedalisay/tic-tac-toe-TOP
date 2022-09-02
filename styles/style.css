@@ -34,6 +34,10 @@ footer{
     border-radius: .5rem;
     font-size: clamp(1.2rem, 2vw, 1.4rem);
 }
+.dropdown{
+    width: clamp(10rem, 20vw, 12rem);
+    border: .1rem solid var(--main-black);
+}
 
 #theme-frame{
     display: flex;
@@ -44,9 +48,6 @@ footer{
 #theme-button:hover{
     background: var(--main-black);
     color: var(--main-white);
-}
-#theme-dropdown{
-    border: .1rem solid var(--main-black);
 }
 #theme-dropdown > li{
     padding: 1rem;
