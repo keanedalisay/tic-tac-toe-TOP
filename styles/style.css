@@ -102,7 +102,9 @@ footer{
 
 
 .cprg-notice{
+    text-align: center;
     font-size: clamp(.8rem, 2vw, 1rem);
+    line-height: clamp(1rem, 10vh, 2rem);
 }
 .link{
     text-decoration: none;
