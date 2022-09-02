@@ -64,3 +64,15 @@ footer{
     width: clamp(2rem, 5vw, 2.5rem);
     height: clamp(2rem, 5vw, 2.5rem);
 }
+
+#subtitle-frame{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.subtitle{
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: clamp(4rem, 10vh, 6rem);
+}
+
