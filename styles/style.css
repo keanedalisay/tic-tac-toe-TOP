@@ -23,6 +23,9 @@ footer{
     width: min(100%, 78rem);
 }
 
+main, footer, .page{
+    padding: clamp(1rem, 5vw, 3rem);
+}
 .frame{
     display: flex;
     flex-flow: row wrap;
