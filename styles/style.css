@@ -64,6 +64,10 @@ main, footer, .page{
     background: var(--main-black);
     color: var(--main-white);
 }
+#theme-dropdown{
+    position: absolute;
+    top: max(12vh, 8rem);
+}
 #theme-dropdown > li{
     padding: 1rem;
     display: flex;
@@ -100,6 +104,9 @@ main, footer, .page{
 #pick-ai-button:hover{
     background: var(--main-red);
     color: var(--main-white);
+}
+#ai-dropdown{
+    position: absolute;
 }
 #ai-dropdown > li{
     height: clamp(4rem, 5vh, 4.5rem);
