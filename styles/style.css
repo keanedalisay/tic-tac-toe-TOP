@@ -17,12 +17,10 @@ html{
 main{
     margin: 0 auto;
     width: min(100%, 78rem);
-    height: max(90vh, 50rem);
 }
 footer{
     margin: 0 auto;
     width: min(100%, 78rem);
-    height: max(10vh, 10rem);
 }
 
 .frame{
@@ -44,6 +42,7 @@ footer{
     width: clamp(10rem, 20vw, 12rem);
     border: .1rem solid var(--main-black);
 }
+
 
 #theme-button:hover{
     background: var(--main-black);
