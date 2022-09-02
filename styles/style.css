@@ -12,3 +12,14 @@ html{
 #splash-page, #game-page{
     display: none;
 }
+
+main{
+    margin: 0 auto;
+    width: min(100%, 78rem);
+    height: max(90vh, 50rem);
+}
+footer{
+    margin: 0 auto;
+    width: min(100%, 78rem);
+    height: max(10vh, 10rem);
+}
