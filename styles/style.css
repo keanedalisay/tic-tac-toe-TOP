@@ -261,3 +261,23 @@ footer{
     border-right: transparent;
     border-bottom: transparent;
 }
+
+.player-one{
+    color: var(--main-green);
+}
+.player-two{
+    color: var(--main-red);
+}
+.win{
+    color: var(--main-gold);
+    animation: mark-win 1s ease-in-out infinite;
+}
+
+@keyframes mark-win {
+    25%{
+        color: transparent;
+    }
+    75%{
+        color: var(--main-gold);
+    }
+}
