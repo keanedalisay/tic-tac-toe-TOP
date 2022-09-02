@@ -189,13 +189,13 @@ footer{
 #pick-x-button, #pick-o-button{
     width: clamp(5rem, 10vw, 7rem);
     height: clamp(5rem, 10vw, 7rem);
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
 }
 #pick-x-button::after, #pick-o-button::after{
     content: '';
     position: absolute;
-    margin-top: clamp(2rem, 5vw, 3rem);
-    width: clamp(5rem, 10vw, 7rem);
+    margin-top: clamp(3rem, 5vw, 4rem);
+    width: clamp(5rem, 10vw, 6rem);
     height: .3rem;
     display: block;
 }
@@ -212,11 +212,11 @@ footer{
 
 
 #game-board-frame{
-    height: max(40vh, 25rem);
+    height: max(40vh, 35rem);
 }
 .game-board{
-    width: clamp(25rem, 50vw, 35rem);
-    height: clamp(25rem, 50vw, 35rem);
+    width: clamp(25rem, 50vh, 35rem);
+    height: clamp(25rem, 50vh, 35rem);
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-template-rows: repeat(3, auto);
@@ -226,8 +226,8 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: .1rem solid var(--main-black);
-    font-size: clamp(2rem, 5vw, 3rem);
+    border: .2rem solid var(--main-black);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
 }
 .tile:hover{
     cursor: pointer;
