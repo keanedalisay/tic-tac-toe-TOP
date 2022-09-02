@@ -10,21 +10,25 @@ html{
     font-size: 10px;
 }
 
-#splash-page, #game-page{
+#game-page{
     display: none;
 }
 
 main{
     margin: 0 auto;
+    padding: 0 clamp(1rem, 7vw, 5rem);
     width: min(100%, 78rem);
 }
 footer{
     margin: 0 auto;
+    padding: 0 clamp(1rem, 7vw, 5rem);
     width: min(100%, 78rem);
 }
 
-main, footer, .page{
+.page{
+    margin: 0 auto;
     padding: 0 clamp(1rem, 7vw, 5rem);
+    width: min(100%, 78rem);
 }
 .frame{
     display: flex;
