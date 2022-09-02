@@ -137,3 +137,28 @@ footer{
 .link:hover{
     text-decoration: underline solid var(--main-black);
 }
+
+#splash-page{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--main-white);
+}
+#title-frame{
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+#title-frame > svg{
+    width: clamp(10rem, 5vw, 12rem);
+    height: clamp(10rem, 5vw, 12rem);
+}
+.title{
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: clamp(6rem, 10vh, 10rem);
+}
