@@ -67,6 +67,7 @@ main, footer, .page{
 #theme-dropdown{
     position: absolute;
     top: max(12vh, 8rem);
+    display: none;
 }
 #theme-dropdown > li{
     padding: 1rem;
@@ -107,6 +108,7 @@ main, footer, .page{
 }
 #ai-dropdown{
     position: absolute;
+    display: none;
 }
 #ai-dropdown > li{
     height: clamp(4rem, 5vh, 4.5rem);
