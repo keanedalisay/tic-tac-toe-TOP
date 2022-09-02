@@ -10,7 +10,7 @@ html{
     font-size: 10px;
 }
 
-#splash-page, #game-page{
+#splash-page, #game-page, #theme-dropdown, #ai-dropdown{
     display: none;
 }
 
