@@ -214,3 +214,50 @@ footer{
 #game-board-frame{
     height: max(40vh, 25rem);
 }
+.game-board{
+    width: clamp(25rem, 50vw, 35rem);
+    height: clamp(25rem, 50vw, 35rem);
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(3, auto);
+}
+
+.tile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: .1rem solid var(--main-black);
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+.tile:hover{
+    cursor: pointer;
+    border-color: var(--main-gold);
+}
+.one{
+    border-left: transparent;
+    border-top: transparent;
+}
+.two{
+    border-top: transparent;
+}
+.three{
+    border-top: transparent;
+    border-right: transparent;
+}
+.four{
+    border-left: transparent;
+}
+.six{
+    border-right: transparent;
+}
+.seven{
+    border-left: transparent;
+    border-bottom: transparent;
+}
+.eight{
+    border-bottom: transparent;
+}
+.nine{
+    border-right: transparent;
+    border-bottom: transparent;
+}
