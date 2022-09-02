@@ -26,9 +26,13 @@ footer{
 }
 
 .button{
+    width: clamp(10rem, 20vw, 12rem);
+    height: clamp(3rem, 20vh, 4rem);
+    padding: .5rem;
     background: var(--main-white);
     border: none;
-    border-radius: 1rem;
+    border-radius: .5rem;
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
 }
 
 #theme-frame{
@@ -36,10 +40,6 @@ footer{
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-}
-#theme-button{
-    padding: clamp(1rem, 2vw, 1.2rem) clamp(1rem, 2vw, 1.5rem);
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
 }
 #theme-button:hover{
     background: var(--main-black);
@@ -75,4 +75,3 @@ footer{
     font-size: clamp(2rem, 5vw, 4rem);
     line-height: clamp(4rem, 10vh, 6rem);
 }
-
