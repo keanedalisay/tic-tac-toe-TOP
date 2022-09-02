@@ -34,7 +34,7 @@ main, footer, .page{
 }
 .button{
     width: clamp(10rem, 20vw, 12rem);
-    height: clamp(3rem, 20vh, 4rem);
+    height: clamp(4rem, 10vh, 6rem);
     padding: .5rem;
     background: var(--main-white);
     border: none;
@@ -83,9 +83,9 @@ main, footer, .page{
     height: max(20vh, 10rem);
 }
 #pick-friend-button, #pick-ai-button{
-    width: clamp(10rem, 20vw, 14rem);
-    height: clamp(3rem, 20vh, 5rem);
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    width: clamp(10rem, 20vw, 15rem);
+    height: clamp(5rem, 10vh, 8rem);
+    font-size: clamp(1.2rem, 2vh, 1.5rem);
 }
 #pick-friend-button:hover{
     background: var(--main-green);
