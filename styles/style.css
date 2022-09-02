@@ -10,10 +10,6 @@ html{
     font-size: 10px;
 }
 
-#game-page{
-    display: none;
-}
-
 main{
     margin: 0 auto;
     padding: 0 clamp(1rem, 7vw, 5rem);
@@ -163,3 +159,4 @@ footer{
     font-size: clamp(3rem, 5vw, 5rem);
     line-height: clamp(6rem, 10vh, 10rem);
 }
+
