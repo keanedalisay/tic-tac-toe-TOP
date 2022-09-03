@@ -50,7 +50,7 @@ footer{
     background: var(--main-white);
     border: .1rem solid var(--main-black);
 }
-.dropdown > li:hover{
+.dropdown > li:hover, .dropdown > li:focus{
     cursor: pointer;
     background: var(--main-black);
     color: var(--main-white);
@@ -60,7 +60,7 @@ footer{
 #theme-frame{
     height: max(15vh, 8rem);
 }
-#theme-button:hover{
+#theme-button:hover, #theme-button:focus{
     background: var(--main-black);
     color: var(--main-white);
 }
@@ -98,11 +98,11 @@ footer{
     height: clamp(5rem, 10vh, 8rem);
     font-size: clamp(1.2rem, 2vh, 1.5rem);
 }
-#pick-friend-button:hover{
+#pick-friend-button:hover, #pick-friend-button:focus{
     background: var(--main-green);
     color: var(--main-white);
 }
-#pick-ai-button:hover{
+#pick-ai-button:hover, #pick-ai-button:focus{
     background: var(--main-red);
     color: var(--main-white);
 }
@@ -202,10 +202,14 @@ footer{
 #pick-x-button:hover, #pick-o-button:hover{
     cursor: pointer;
 }
-#pick-x-button:hover:after, #pick-o-button:hover:after{
+#pick-x-button:hover:after, 
+#pick-o-button:hover:after,
+#pick-x-button:focus:after, 
+#pick-o-button:focus:after{
     background: var(--main-gold);
 }
-#menu-button:hover{
+
+#menu-button:hover, #menu-button:focus{
     background: var(--main-black);
     color: var(--main-white);
 }
@@ -229,7 +233,7 @@ footer{
     border: .2rem solid var(--main-black);
     font-size: clamp(1.5rem, 3vw, 2.5rem);
 }
-.tile:hover{
+.tile:hover, .tile:focus{
     cursor: pointer;
     border-color: var(--main-gold);
 }
