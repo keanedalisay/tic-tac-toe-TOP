@@ -216,11 +216,11 @@ footer{
 
 
 #game-board-frame{
-    height: max(40vh, 35rem);
+    height: clamp(25rem, 60vh, 35rem);
 }
 .game-board{
-    width: clamp(25rem, 50vh, 35rem);
-    height: clamp(25rem, 50vh, 35rem);
+    width: clamp(20rem, 50vh, 35rem);
+    height: clamp(20rem, 50vh, 35rem);
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-template-rows: repeat(3, auto);
