@@ -281,3 +281,7 @@ footer{
         color: var(--main-gold);
     }
 }
+
+.active{
+    display: grid !important;
+}
