@@ -67,7 +67,10 @@ footer{
 }
 #theme-dropdown{
     position: absolute;
-    top: max(12vh, 8rem);
+    left: 50%;
+    top: max(12vh, 7rem);
+    transform: translate(-50%, 0);
+    display: none;
     display: none;
 }
 #theme-dropdown > li{
@@ -103,6 +106,7 @@ footer{
     height: max(20vh, 10rem);
 }
 #pick-friend-button, #pick-ai-button{
+    position: relative;
     width: clamp(10rem, 15vh, 15rem);
     height: clamp(5rem, 10vh, 8rem);
     font-size: clamp(1.2rem, 2vh, 1.5rem);
@@ -117,6 +121,9 @@ footer{
 }
 #ai-dropdown{
     position: absolute;
+    left: 50%;
+    top: max(10vh, 3rem);
+    transform: translate(-50%, 0);
     display: none;
 }
 #ai-dropdown > li{
