@@ -2,7 +2,12 @@
     --main-green: #29C71A;
     --main-red: #C71A1A;
     --main-gold: #EEBB1B;
-    --main-black: #000000;
-    --main-white: #FFFFFF;
 
+    --bkgrnd-clr: #FFFFFF;
+    --text-clr: #000000;
+    --border-clr: #000000;
+
+    --focus-bkgrnd-clr: #000000;
+    --focus-text-clr: #FFFFFF;
+    --focus-svg-fill: #FFFFFF;
 }
