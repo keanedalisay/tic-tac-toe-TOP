@@ -1,7 +1,8 @@
-:root{
+:root.light-theme{
     --main-green: #29C71A;
     --main-red: #C71A1A;
     --main-gold: #EEBB1B;
     --main-black: #000000;
     --main-white: #FFFFFF;
+
 }

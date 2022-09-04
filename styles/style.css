@@ -94,7 +94,7 @@ footer{
     height: max(20vh, 10rem);
 }
 #pick-friend-button, #pick-ai-button{
-    width: clamp(10rem, 20vw, 15rem);
+    width: clamp(10rem, 15vh, 15rem);
     height: clamp(5rem, 10vh, 8rem);
     font-size: clamp(1.2rem, 2vh, 1.5rem);
 }
