@@ -2,12 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: var(--text-clr);
     list-style: none;
     font-family: 'Press Start 2P', Helvetica, sans-serif;
 }
 
 html{
     font-size: 10px;
+    background: var(--bkgrnd-clr);
 }
 
 main{
@@ -54,7 +56,6 @@ footer{
     cursor: pointer;
     background: var(--focus-bkgrnd-clr);
     color: var(--focus-text-clr);
-    fill: var(--focus-svg-fill);
 }
 
 #theme-frame{
@@ -80,6 +81,13 @@ footer{
     width: clamp(2rem, 5vw, 2.5rem);
     height: clamp(2rem, 5vw, 2.5rem);
     fill: var(--svg-fill);
+}
+
+#theme-dropdown > li:hover > svg,
+#theme-dropdown > li:focus > svg{
+    width: clamp(2rem, 5vw, 2.5rem);
+    height: clamp(2rem, 5vw, 2.5rem);
+    fill: var(--focus-svg-fill);
 }
 
 #subtitle-frame{
