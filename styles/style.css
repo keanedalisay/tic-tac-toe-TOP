@@ -129,8 +129,9 @@ footer{
 }
 .link{
     text-decoration: none;
+    color: var(--main-gold);
 }
-.link:hover{
+.link:hover, .link:focus{
     text-decoration: underline solid var(--border-clr);
 }
 
