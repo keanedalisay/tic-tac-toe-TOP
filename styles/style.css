@@ -79,6 +79,7 @@ footer{
 #theme-dropdown > li > svg{
     width: clamp(2rem, 5vw, 2.5rem);
     height: clamp(2rem, 5vw, 2.5rem);
+    fill: var(--svg-fill);
 }
 
 #subtitle-frame{
@@ -155,8 +156,10 @@ footer{
 #title-frame > svg{
     width: clamp(10rem, 5vw, 12rem);
     height: clamp(10rem, 5vw, 12rem);
+    fill: var(--svg-fill);
 }
 .title{
+    color: var(--text-clr);
     font-size: clamp(3rem, 5vw, 5rem);
     line-height: clamp(6rem, 10vh, 10rem);
 }
