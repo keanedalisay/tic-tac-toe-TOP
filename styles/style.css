@@ -24,6 +24,7 @@ footer{
 }
 
 .page{
+    z-index: 999;
     margin: 0 auto;
     padding: 0 clamp(1rem, 7vw, 5rem);
     width: min(100%, 78rem);
