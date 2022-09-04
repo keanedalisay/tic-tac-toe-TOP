@@ -191,6 +191,7 @@ footer{
     width: clamp(5rem, 10vw, 7rem);
     height: clamp(5rem, 10vw, 7rem);
     font-size: clamp(1.5rem, 3vw, 2rem);
+    background: var(--bkgrnd-clr);
 }
 #pick-x-button::after, #pick-o-button::after{
     content: '';
@@ -225,12 +226,14 @@ footer{
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-template-rows: repeat(3, auto);
+    background: var(--bkgrnd-clr);
 }
 
 .tile{
     display: flex;
     justify-content: center;
     align-items: center;
+    background: var(--bkgrnd-clr);
     border: .2rem solid var(--border-clr);
     font-size: clamp(1.5rem, 3vw, 2.5rem);
 }
