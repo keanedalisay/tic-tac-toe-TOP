@@ -36,7 +36,7 @@ footer{
     width: clamp(10rem, 20vw, 12rem);
     height: clamp(4rem, 10vh, 6rem);
     padding: .5rem;
-    background: var(--main-white);
+    background: var(--bkgrnd-clr);
     border: none;
     border-radius: .5rem;
     font-size: clamp(1.2rem, 2vw, 1.4rem);
@@ -47,22 +47,22 @@ footer{
 .dropdown{
     z-index: 1;
     width: clamp(10rem, 20vw, 12rem);
-    background: var(--main-white);
-    border: .1rem solid var(--main-black);
+    background: var(--bkgrnd-clr);
+    border: .1rem solid var(--border-clr);
 }
 .dropdown > li:hover, .dropdown > li:focus{
     cursor: pointer;
-    background: var(--main-black);
-    color: var(--main-white);
-    fill: var(--main-white);
+    background: var(--focus-bkgrnd-clr);
+    color: var(--focus-text-clr);
+    fill: var(--focus-svg-fill);
 }
 
 #theme-frame{
     height: max(15vh, 8rem);
 }
 #theme-button:hover, #theme-button:focus{
-    background: var(--main-black);
-    color: var(--main-white);
+    background: var(--focus-bkgrnd-clr);
+    color: var(--focus-text-clr);
 }
 #theme-dropdown{
     position: absolute;
@@ -100,11 +100,11 @@ footer{
 }
 #pick-friend-button:hover, #pick-friend-button:focus{
     background: var(--main-green);
-    color: var(--main-white);
+    color: var(--focus-text-clr);
 }
 #pick-ai-button:hover, #pick-ai-button:focus{
     background: var(--main-red);
-    color: var(--main-white);
+    color: var(--focus-text-clr);
 }
 #ai-dropdown{
     position: absolute;
@@ -131,7 +131,7 @@ footer{
     text-decoration: none;
 }
 .link:hover{
-    text-decoration: underline solid var(--main-black);
+    text-decoration: underline solid var(--border-clr);
 }
 
 #splash-page{
@@ -141,7 +141,7 @@ footer{
     right: 0;
     bottom: 0;
     display: none;
-    background: var(--main-white);
+    background: var(--bkgrnd-clr);
 }
 #title-frame{
     height: 100%;
@@ -170,7 +170,7 @@ footer{
     grid-template-columns: 100%;
     justify-content: center;
     align-content: center;
-    background-color: var(--main-white);
+    background: var(--bkgrnd-clr);
 }
 
 .div-button{
@@ -210,8 +210,8 @@ footer{
 }
 
 #menu-button:hover, #menu-button:focus{
-    background: var(--main-black);
-    color: var(--main-white);
+    background: var(--focus-bkgrnd-clr);
+    color: var(--focus-text-clr);
 }
 
 
@@ -230,7 +230,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: .2rem solid var(--main-black);
+    border: .2rem solid var(--border-clr);
     font-size: clamp(1.5rem, 3vw, 2.5rem);
 }
 .tile:hover, .tile:focus{
