@@ -24,3 +24,19 @@ const pages = {
     splashPage : document.getElementById('splash-page'),
     gamePage : document.getElementById('game-page'),
 }
+
+
+buttons.themeBtn.addEventListener('click', function(e){
+    dropdowns.themeDropdown.classList.toggle('active');
+    buttons.lightThemeBtn.setAttribute('tabindex', '0');
+    buttons.darkThemeBtn.setAttribute('tabindex', '0');
+});
+
+
+
+buttons.pickAIBtn.addEventListener('click', function(e){
+    dropdowns.modeAIDropdown.classList.toggle('active');
+    buttons.easyAIBtn.setAttribute('tabindex', '0');
+    buttons.mediumAIBtn.setAttribute('tabindex', '0');
+    buttons.hardAIBtn.setAttribute('tabindex', '0');
+})
