@@ -84,12 +84,11 @@ footer{
     width: clamp(2rem, 5vw, 2.5rem);
     height: clamp(2rem, 5vw, 2.5rem);
     fill: var(--svg-fill);
+    pointer-events: none;
 }
 
 #theme-dropdown > li:hover > svg,
 #theme-dropdown > li:focus > svg{
-    width: clamp(2rem, 5vw, 2.5rem);
-    height: clamp(2rem, 5vw, 2.5rem);
     fill: var(--focus-svg-fill);
 }
 
