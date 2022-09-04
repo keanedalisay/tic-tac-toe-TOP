@@ -311,3 +311,6 @@ footer{
 .active{
     display: grid !important;
 }
+.hidden{
+    color: var(--bkgrnd-clr);
+}
