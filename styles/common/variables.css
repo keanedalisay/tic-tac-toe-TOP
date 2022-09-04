@@ -12,3 +12,18 @@
     --focus-text-clr: #FFFFFF;
     --focus-svg-fill: #FFFFFF;
 }
+
+:root.dark-theme{
+    --main-green: #29C71A;
+    --main-red: #C71A1A;
+    --main-gold: #EEBB1B;
+
+    --bkgrnd-clr: #2E3134;
+    --text-clr: #E8EAED;
+    --border-clr: #E8EAED;
+    --svg-fill: #E8EAED;
+
+    --focus-bkgrnd-clr: #E8EAED;
+    --focus-text-clr: #000000;
+    --focus-svg-fill: #000000;
+}
