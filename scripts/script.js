@@ -63,3 +63,37 @@ buttons.pickAIBtn.addEventListener('click', function(e){
     buttons.mediumAIBtn.setAttribute('tabindex', '0');
     buttons.hardAIBtn.setAttribute('tabindex', '0');
 })
+
+buttons.pickFriendBtn.addEventListener('click', displayGamePage);
+
+function displayGamePage(e){
+    pages.gamePage.classList.add('active');
+    buttons.markXBtn.setAttribute('tabindex', '0');
+    buttons.markOBtn.setAttribute('tabindex', '0');
+
+    buttons.themeBtn.setAttribute('tabindex', '-1');
+    buttons.pickFriendBtn.setAttribute('tabindex', '-1');
+    buttons.pickAIBtn.setAttribute('tabindex', '-1');
+
+    const links = document.querySelectorAll('.link');
+    links.forEach(link => {
+        link.setAttribute('tabindex', '-1');
+    })
+}
+
+buttons.menuBtn.addEventListener('click', closeGamePage);
+
+function closeGamePage(e){
+    pages.gamePage.classList.remove('active');
+    buttons.markXBtn.removeAttribute('tabindex');
+    buttons.markOBtn.removeAttribute('tabindex');
+
+    buttons.themeBtn.removeAttribute('tabindex');
+    buttons.pickFriendBtn.removeAttribute('tabindex');
+    buttons.pickAIBtn.removeAttribute('tabindex');
+
+    const links = document.querySelectorAll('.link');
+    links.forEach(link => {
+        link.removeAttribute('tabindex');
+    })
+}
