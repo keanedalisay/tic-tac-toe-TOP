@@ -197,6 +197,9 @@ footer{
     justify-content: center;
     align-items: center;
 }
+.div-button > span{
+    pointer-events: none;
+}
 
 #cntrl-board-frame{
     height: max(15vh, 5rem);
