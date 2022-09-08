@@ -71,6 +71,11 @@ function displayGamePage(e){
     buttons.markXBtn.setAttribute('tabindex', '0');
     buttons.markOBtn.setAttribute('tabindex', '0');
 
+    const tiles = document.querySelectorAll('.tile');
+    tiles.forEach(tile => {
+        tile.setAttribute('tabindex', '0')
+    })
+
     buttons.themeBtn.setAttribute('tabindex', '-1');
     buttons.pickFriendBtn.setAttribute('tabindex', '-1');
     buttons.pickAIBtn.setAttribute('tabindex', '-1');
@@ -87,6 +92,11 @@ function closeGamePage(e){
     pages.gamePage.classList.remove('active');
     buttons.markXBtn.removeAttribute('tabindex');
     buttons.markOBtn.removeAttribute('tabindex');
+
+    const tiles = document.querySelectorAll('.tile');
+    tiles.forEach(tile => {
+        tile.setAttribute('tabindex', '-1')
+    })
 
     buttons.themeBtn.removeAttribute('tabindex');
     buttons.pickFriendBtn.removeAttribute('tabindex');
