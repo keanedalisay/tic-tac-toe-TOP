@@ -11,6 +11,11 @@
     --focus-bkgrnd-clr: #000000;
     --focus-text-clr: #FFFFFF;
     --focus-svg-fill: #FFFFFF;
+
+    --x-after-bkgrnd: #FFFFFF;
+    --o-after-bkgrnd: #FFFFFF;
+    --x-after-bkgrnd-f: #EEBB1B;
+    --o-after-bkgrnd-f: #EEBB1B;
 }
 
 :root.dark-theme{
@@ -26,4 +31,9 @@
     --focus-bkgrnd-clr: #E8EAED;
     --focus-text-clr: #000000;
     --focus-svg-fill: #000000;
+
+    --x-after-bkgrnd: #2E3134;
+    --o-after-bkgrnd: #2E3134;
+    --x-after-bkgrnd-f: #EEBB1B;
+    --o-after-bkgrnd-f: #EEBB1B;
 }

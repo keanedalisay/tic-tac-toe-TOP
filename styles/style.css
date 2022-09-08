@@ -214,22 +214,33 @@ footer{
     font-size: clamp(1.5rem, 3vw, 2rem);
     background: var(--bkgrnd-clr);
 }
-#pick-x-button::after, #pick-o-button::after{
+#pick-x-button::after{
     content: '';
+    background: var(--x-after-bkgrnd);
     position: absolute;
     margin-top: clamp(3rem, 5vw, 4rem);
     width: clamp(5rem, 10vw, 6rem);
     height: .3rem;
     display: block;
 }
+#pick-o-button::after{
+    content: '';
+    background: var(--o-after-bkgrnd);
+    position: absolute;
+    margin-top: clamp(3rem, 5vw, 4rem);
+    width: clamp(5rem, 10vw, 6rem);
+    height: .3rem;
+    display: block;
+}
+
 #pick-x-button:hover, #pick-o-button:hover{
     cursor: pointer;
 }
-#pick-x-button:hover:after, 
-#pick-o-button:hover:after,
-#pick-x-button:focus:after, 
-#pick-o-button:focus:after{
-    background: var(--main-gold);
+#pick-x-button:hover:after, #pick-x-button:focus:after{
+    background: var(--x-after-bkgrnd-f);
+} 
+#pick-o-button:focus:after, #pick-o-button:hover:after{
+    background: var(--o-after-bkgrnd-f);
 }
 
 #menu-button:hover, #menu-button:focus{
