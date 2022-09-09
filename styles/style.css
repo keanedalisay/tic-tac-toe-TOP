@@ -103,11 +103,11 @@ footer{
 }
 
 #pick-foe-frame{
-    height: max(20vh, 10rem);
+    height: max(20vh, 15rem);
 }
 #pick-friend-button, #pick-ai-button{
     position: relative;
-    width: clamp(10rem, 15vh, 15rem);
+    width: clamp(10rem, 20vw, 12rem);
     height: clamp(5rem, 10vh, 8rem);
     font-size: clamp(1.2rem, 2vh, 1.5rem);
 }
@@ -218,7 +218,7 @@ footer{
     content: '';
     background: var(--x-after-bkgrnd);
     position: absolute;
-    margin-top: clamp(3rem, 5vw, 4rem);
+    margin-top: clamp(5rem, 5vw, 6rem);
     width: clamp(5rem, 10vw, 6rem);
     height: .3rem;
     display: block;
@@ -227,7 +227,7 @@ footer{
     content: '';
     background: var(--o-after-bkgrnd);
     position: absolute;
-    margin-top: clamp(3rem, 5vw, 4rem);
+    margin-top: clamp(5rem, 5vw, 6rem);
     width: clamp(5rem, 10vw, 6rem);
     height: .3rem;
     display: block;
