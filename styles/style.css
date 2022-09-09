@@ -312,6 +312,9 @@ footer{
     color: var(--main-gold);
     animation: mark-win 1s ease-in-out infinite;
 }
+.tie{
+    animation: mark-tie 1s ease-in-out infinite;
+}
 
 @keyframes mark-win {
     25%{
@@ -319,6 +322,11 @@ footer{
     }
     75%{
         color: var(--main-gold);
+    }
+}
+@keyframes mark-tie {
+    25%{
+        color: transparent;
     }
 }
 
