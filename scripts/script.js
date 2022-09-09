@@ -25,6 +25,13 @@ const pages = {
     gamePage : document.getElementById('game-page'),
 }
 
+setTimeout(() => {
+    pages.splashPage.classList.add('drop-out');
+}, 2000)
+setTimeout(() => {
+    pages.splashPage.classList.remove('drop-out');
+    pages.splashPage.classList.remove('active');
+}, 5000)
 
 buttons.themeBtn.addEventListener('click', function(e){
     dropdowns.themeDropdown.classList.toggle('active');

@@ -333,6 +333,15 @@ footer{
 .active{
     display: grid !important;
 }
+.drop-in{
+    margin-top: 0;
+    transition: margin-top ease-in-out 3s;
+}
+.drop-out{
+    margin-top: 100vh;
+    transition: margin-top ease-in-out 3s;
+}
+
 .hidden{
     color: var(--bkgrnd-clr);
 }
