@@ -165,9 +165,9 @@ function displayMarks(){
 
 const tileTemplate = (() => {
     return [
-    '#', ',', '$', 
-    ',', '$', '#', 
-    '#', ',', '$'
+    0, 1, 2, 
+    3, 4, 5, 
+    6, 7, 8
     ]
 });
 
@@ -239,8 +239,11 @@ function markTileX (e){
 
         for (let i = 0; i < Gameboard.tiles.length; i++){
             if (i == tileIndex){
-                if (Gameboard.tiles[tileIndex] === "#" || Gameboard.tiles[tileIndex] === "," 
-                || Gameboard.tiles[tileIndex] === "$"){
+                if (Gameboard.tiles[tileIndex] === 0 || Gameboard.tiles[tileIndex] === 1 
+                    || Gameboard.tiles[tileIndex] === 2 || Gameboard.tiles[tileIndex] === 3
+                    || Gameboard.tiles[tileIndex] === 4 || Gameboard.tiles[tileIndex] === 5
+                    || Gameboard.tiles[tileIndex] === 6 || Gameboard.tiles[tileIndex] === 7
+                    || Gameboard.tiles[tileIndex] === 8){
     
                     Gameboard.tiles[tileIndex] = "X";
                     tile.classList.remove('hidden');
@@ -282,8 +285,11 @@ function markTileO (e){
 
         for (let i = 0; i < Gameboard.tiles.length; i++){
             if (i == tileIndex){
-                if (Gameboard.tiles[tileIndex] === "#" || Gameboard.tiles[tileIndex] === "," 
-                || Gameboard.tiles[tileIndex] === "$"){
+                if (Gameboard.tiles[tileIndex] === 0 || Gameboard.tiles[tileIndex] === 1 
+                    || Gameboard.tiles[tileIndex] === 2 || Gameboard.tiles[tileIndex] === 3
+                    || Gameboard.tiles[tileIndex] === 4 || Gameboard.tiles[tileIndex] === 5
+                    || Gameboard.tiles[tileIndex] === 6 || Gameboard.tiles[tileIndex] === 7
+                    || Gameboard.tiles[tileIndex] === 8){
     
                     Gameboard.tiles[tileIndex] = "O";
                     tile.classList.remove('hidden');
