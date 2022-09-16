@@ -90,8 +90,8 @@ function displayGamePage(e){
     buttons.markOBtn.addEventListener('click', beginGame);
     buttons.markOBtn.addEventListener('keydown', beginGame);
 
-    const tiles = document.querySelectorAll('.tile');
-    tiles.forEach(tile => {
+    const board = document.querySelectorAll('.tile');
+    board.forEach(tile => {
         tile.setAttribute('tabindex', '0')
     })
 
@@ -121,8 +121,8 @@ function closeGamePage(e){
     buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "");
     buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "");
 
-    const tiles = document.querySelectorAll('.tile');
-    tiles.forEach(tile => {
+    const board = document.querySelectorAll('.tile');
+    board.forEach(tile => {
         tile.setAttribute('tabindex', '-1')
     })
 
@@ -139,35 +139,26 @@ function closeGamePage(e){
 }
 
 function addEventTiles (callback){
-    const tiles = document.querySelectorAll('.tile');
-            tiles.forEach(tile => {
-                tile.addEventListener('click', callback);
-                tile.addEventListener('keydown', callback);
-            })
+    const board = document.querySelectorAll('.tile');
+    board.forEach(tile => {
+        tile.addEventListener('click', callback);
+        tile.addEventListener('keydown', callback);
+    })
 }
 
 function removeEventTiles (callback){
-    const tiles = document.querySelectorAll('.tile');
-            tiles.forEach(tile => {
-                tile.removeEventListener('click', callback);
-                tile.removeEventListener('keydown', callback);
-            })
+    const board = document.querySelectorAll('.tile');
+    board.forEach(tile => {
+        tile.removeEventListener('click', callback);
+        tile.removeEventListener('keydown', callback);
+    })
 }
 
 function getAfterColor(elem){
     return window.getComputedStyle(elem, '::after').getPropertyValue('background-color');
 }
 
-function displayMarks(){
-    let tileIndex = 0;
-    const tiles = document.querySelectorAll('.tile');
-    tiles.forEach(tile => {
-        tile.textContent = Gameboard.tiles[tileIndex];
-        tileIndex++;
-    })
-}
-
-const tileTemplate = (() => {
+const boardTemplate = (() => {
     return [
     0, 1, 2, 
     3, 4, 5, 
@@ -175,15 +166,24 @@ const tileTemplate = (() => {
     ]
 });
 
-const Gameboard = (() => {
-    const tiles = tileTemplate();
-    return {tiles};
+const game = (() => {
+    const board = boardTemplate();
+    return {board};
 })();
 
+function displayMarks(){
+    let tileIndex = 0;
+    const board = document.querySelectorAll('.tile');
+    board.forEach(tile => {
+        tile.textContent = game.board[tileIndex];
+        tileIndex++;
+    })
+}
+
 function resetGame (){
-    const tiles = document.querySelectorAll('.tile');
-    const tileTemps = tileTemplate();
-    tiles.forEach(tile => {
+    const board = document.querySelectorAll('.tile');
+    const bT = boardTemplate();
+    board.forEach(tile => {
         tile.classList.add('hidden');
         tile.classList.remove('player-one');
         tile.classList.remove('player-two');
@@ -193,16 +193,17 @@ function resetGame (){
     removeEventTiles(markTileX);
     removeEventTiles(markTileO);
 
-    for (let i = 0; i < Gameboard.tiles.length; i++){
-        Gameboard.tiles[i] = tileTemps[i];
+    let tileIndex = 0;
+    while (tileIndex < game.board.length){
+        game.board[tileIndex] = bT[tileIndex];
+        tileIndex++;
     }
 
     buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "");
-    buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "");
-
     buttons.markXBtn.addEventListener('click', beginGame);
     buttons.markXBtn.addEventListener('keydown', beginGame);
 
+    buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "");
     buttons.markOBtn.addEventListener('click', beginGame);
     buttons.markOBtn.addEventListener('keydown', beginGame);
 }
@@ -212,24 +213,26 @@ function beginGame (e){
     (e.target === buttons.markXBtn && e.type === 'keydown') && (e.key === ' ' || e.key === 'Enter')){
 
         buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "#29C71A");
-        addEventTiles(markTileX);
         buttons.markXBtn.removeEventListener('click', beginGame);
         buttons.markXBtn.removeEventListener('keydown', beginGame);
 
         buttons.markOBtn.removeEventListener('click', beginGame);
         buttons.markOBtn.removeEventListener('keydown', beginGame);
+
+        addEventTiles(markTileX);
 
     } 
     else if ((e.target === buttons.markOBtn && e.type === 'click') || 
     (e.target === buttons.markOBtn && e.type === 'keydown') && (e.key === ' ' || e.key === 'Enter')){
 
-        buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "#29C71A");
-        addEventTiles(markTileO);
         buttons.markXBtn.removeEventListener('click', beginGame);
         buttons.markXBtn.removeEventListener('keydown', beginGame);
 
+        buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "#29C71A");
         buttons.markOBtn.removeEventListener('click', beginGame);
         buttons.markOBtn.removeEventListener('keydown', beginGame);
+
+        addEventTiles(markTileO);
 
     }
 }
@@ -238,18 +241,19 @@ function markTileX (e){
     const tile = e.target;
     const tileIndex = e.target.getAttribute('data-index');
 
-    if ((e.target === tile && e.type === 'click') || 
-    (e.target === tile && e.type === 'keydown') && (e.key === ' ' || e.key === 'Enter')){
+    if ((tile && e.type === 'click') || (tile && e.type === 'keydown') 
+    && (e.key === ' ' || e.key === 'Enter')){
 
-        for (let i = 0; i < Gameboard.tiles.length; i++){
-            if (i == tileIndex){
-                if (Gameboard.tiles[tileIndex] === 0 || Gameboard.tiles[tileIndex] === 1 
-                    || Gameboard.tiles[tileIndex] === 2 || Gameboard.tiles[tileIndex] === 3
-                    || Gameboard.tiles[tileIndex] === 4 || Gameboard.tiles[tileIndex] === 5
-                    || Gameboard.tiles[tileIndex] === 6 || Gameboard.tiles[tileIndex] === 7
-                    || Gameboard.tiles[tileIndex] === 8){
+        let tInd = 0;
+        while (tInd < game.board.length){
+            if (tInd == tileIndex){
+                if (game.board[tileIndex] === 0 || game.board[tileIndex] === 1 
+                    || game.board[tileIndex] === 2 || game.board[tileIndex] === 3
+                    || game.board[tileIndex] === 4 || game.board[tileIndex] === 5
+                    || game.board[tileIndex] === 6 || game.board[tileIndex] === 7
+                    || game.board[tileIndex] === 8){
     
-                    Gameboard.tiles[tileIndex] = "X";
+                    game.board[tileIndex] = "X";
                     tile.classList.remove('hidden');
                     displayMarks();
                     
@@ -257,6 +261,7 @@ function markTileX (e){
                     addEventTiles(markTileO);
                     
                     checkIfWin();
+
                     if (getAfterColor(buttons.markXBtn) === "rgb(41, 199, 26)"){ // #29C71A .player-one
                         tile.classList.add('player-one');
                         buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "");
@@ -271,7 +276,7 @@ function markTileX (e){
                 break;
             }
             else {
-                continue;
+                tInd++;
             }
         }
     }
@@ -281,27 +286,27 @@ function markTileO (e){
     const tile = e.target;
     const tileIndex = e.target.getAttribute('data-index');
 
-    if ((e.target === tile && e.type === 'click') || 
-    (e.target === tile && e.type === 'keydown') && (e.key === ' ' || e.key === 'Enter')){
+    if ((tile && e.type === 'click') || (tile && e.type === 'keydown') 
+    && (e.key === ' ' || e.key === 'Enter')){
 
-        for (let i = 0; i < Gameboard.tiles.length; i++){
-            if (i == tileIndex){
-                if (Gameboard.tiles[tileIndex] === 0 || Gameboard.tiles[tileIndex] === 1 
-                    || Gameboard.tiles[tileIndex] === 2 || Gameboard.tiles[tileIndex] === 3
-                    || Gameboard.tiles[tileIndex] === 4 || Gameboard.tiles[tileIndex] === 5
-                    || Gameboard.tiles[tileIndex] === 6 || Gameboard.tiles[tileIndex] === 7
-                    || Gameboard.tiles[tileIndex] === 8){
+        let tInd = 0;
+        while (tInd < game.board.length){
+            if (tInd == tileIndex){
+                if (game.board[tileIndex] === 0 || game.board[tileIndex] === 1 
+                    || game.board[tileIndex] === 2 || game.board[tileIndex] === 3
+                    || game.board[tileIndex] === 4 || game.board[tileIndex] === 5
+                    || game.board[tileIndex] === 6 || game.board[tileIndex] === 7
+                    || game.board[tileIndex] === 8){
     
-                    Gameboard.tiles[tileIndex] = "O";
+                    game.board[tileIndex] = "O";
                     tile.classList.remove('hidden');
-                    displayMarks(); 
+                    displayMarks();
                     
                     removeEventTiles(markTileO);
                     addEventTiles(markTileX);
-
+                    
                     checkIfWin();
                     
-    
                     if (getAfterColor(buttons.markOBtn) === "rgb(41, 199, 26)"){ // #29C71A .player-one
                         tile.classList.add('player-one');
                         buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "#C71A1A");
@@ -312,15 +317,13 @@ function markTileO (e){
                         buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "#29C71A");
                         buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "");
                     }
-    
                 }
                 break;
             }
             else {
-                continue;
+                tInd++;
             }
         }
-
     }
 }
 
@@ -328,7 +331,7 @@ function checkIfWin(){
 
     const tiles = document.querySelectorAll('.tile');
     tiles.forEach(tile => {
-        if (Gameboard.tiles[0] === Gameboard.tiles[3] && Gameboard.tiles[3] === Gameboard.tiles[6]){
+        if (game.board[0] === game.board[3] && game.board[3] === game.board[6]){
 
             if (tile.getAttribute('data-index') == 0 || tile.getAttribute('data-index') == 3 
             || tile.getAttribute('data-index') == 6){
@@ -344,7 +347,7 @@ function checkIfWin(){
             } 
             
         }
-        else if (Gameboard.tiles[1] === Gameboard.tiles[4] && Gameboard.tiles[4] === Gameboard.tiles[7]){
+        else if (game.board[1] === game.board[4] && game.board[4] === game.board[7]){
 
             if (tile.getAttribute('data-index') == 1 || tile.getAttribute('data-index') == 4 
             || tile.getAttribute('data-index') == 7){
@@ -359,7 +362,7 @@ function checkIfWin(){
             }
             
         }
-        else if (Gameboard.tiles[2] === Gameboard.tiles[5] && Gameboard.tiles[5] === Gameboard.tiles[8]){
+        else if (game.board[2] === game.board[5] && game.board[5] === game.board[8]){
 
             if (tile.getAttribute('data-index') == 2 || tile.getAttribute('data-index') == 5 
             || tile.getAttribute('data-index') == 8){
@@ -374,7 +377,7 @@ function checkIfWin(){
             }
             
         }
-        else if (Gameboard.tiles[0] === Gameboard.tiles[1] && Gameboard.tiles[1] === Gameboard.tiles[2]){
+        else if (game.board[0] === game.board[1] && game.board[1] === game.board[2]){
 
             if (tile.getAttribute('data-index') == 0 || tile.getAttribute('data-index') == 1 
             || tile.getAttribute('data-index') == 2){
@@ -389,7 +392,7 @@ function checkIfWin(){
             }
             
         }
-        else if (Gameboard.tiles[0] === Gameboard.tiles[4] && Gameboard.tiles[4] === Gameboard.tiles[8]){
+        else if (game.board[0] === game.board[4] && game.board[4] === game.board[8]){
 
             if (tile.getAttribute('data-index') == 0 || tile.getAttribute('data-index') == 4 
             || tile.getAttribute('data-index') == 8){
@@ -404,7 +407,7 @@ function checkIfWin(){
             }
            
         }
-        else if (Gameboard.tiles[2] === Gameboard.tiles[4] && Gameboard.tiles[4] === Gameboard.tiles[6]){
+        else if (game.board[2] === game.board[4] && game.board[4] === game.board[6]){
 
             if (tile.getAttribute('data-index') == 2 || tile.getAttribute('data-index') == 4 
             || tile.getAttribute('data-index') == 6){
@@ -419,7 +422,7 @@ function checkIfWin(){
             }
             
         }
-        else if (Gameboard.tiles[3] === Gameboard.tiles[4] && Gameboard.tiles[4] === Gameboard.tiles[5]){
+        else if (game.board[3] === game.board[4] && game.board[4] === game.board[5]){
 
             if (tile.getAttribute('data-index') == 3 || tile.getAttribute('data-index') == 4 
             || tile.getAttribute('data-index') == 5){
@@ -434,7 +437,7 @@ function checkIfWin(){
             }
             
         }
-        else if (Gameboard.tiles[6] === Gameboard.tiles[7] && Gameboard.tiles[7] === Gameboard.tiles[8]){
+        else if (game.board[6] === game.board[7] && game.board[7] === game.board[8]){
 
             if (tile.getAttribute('data-index') == 6 || tile.getAttribute('data-index') == 7 
             || tile.getAttribute('data-index') == 8){
@@ -450,15 +453,15 @@ function checkIfWin(){
         
         }
         else if (
-            (Gameboard.tiles[0] === "X" || Gameboard.tiles[0] === "O") &&
-            (Gameboard.tiles[1] === "X" || Gameboard.tiles[1] === "O") &&
-            (Gameboard.tiles[2] === "X" || Gameboard.tiles[2] === "O") &&
-            (Gameboard.tiles[3] === "X" || Gameboard.tiles[3] === "O") &&
-            (Gameboard.tiles[4] === "X" || Gameboard.tiles[4] === "O") &&
-            (Gameboard.tiles[5] === "X" || Gameboard.tiles[5] === "O") &&
-            (Gameboard.tiles[6] === "X" || Gameboard.tiles[6] === "O") &&
-            (Gameboard.tiles[7] === "X" || Gameboard.tiles[7] === "O") &&
-            (Gameboard.tiles[8] === "X" || Gameboard.tiles[8] === "O")
+            (game.board[0] === "X" || game.board[0] === "O") &&
+            (game.board[1] === "X" || game.board[1] === "O") &&
+            (game.board[2] === "X" || game.board[2] === "O") &&
+            (game.board[3] === "X" || game.board[3] === "O") &&
+            (game.board[4] === "X" || game.board[4] === "O") &&
+            (game.board[5] === "X" || game.board[5] === "O") &&
+            (game.board[6] === "X" || game.board[6] === "O") &&
+            (game.board[7] === "X" || game.board[7] === "O") &&
+            (game.board[8] === "X" || game.board[8] === "O")
         ){
 
             tile.classList.add('tie');
