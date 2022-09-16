@@ -75,6 +75,10 @@ buttons.pickAIBtn.addEventListener('click', function(e){
 
 buttons.pickFriendBtn.addEventListener('click', displayGamePage);
 
+buttons.easyAIBtn.addEventListener('click', displayGamePage);
+buttons.mediumAIBtn.addEventListener('click', displayGamePage);
+buttons.hardAIBtn.addEventListener('click', displayGamePage);
+
 function displayGamePage(e){
     pages.gamePage.classList.add('active');
     buttons.markXBtn.setAttribute('tabindex', '0');
@@ -248,10 +252,11 @@ function markTileX (e){
                     Gameboard.tiles[tileIndex] = "X";
                     tile.classList.remove('hidden');
                     displayMarks();
-    
+                    
                     removeEventTiles(markTileX);
                     addEventTiles(markTileO);
-    
+                    
+                    checkIfWin();
                     if (getAfterColor(buttons.markXBtn) === "rgb(41, 199, 26)"){ // #29C71A .player-one
                         tile.classList.add('player-one');
                         buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "");
@@ -262,18 +267,14 @@ function markTileX (e){
                         buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "");
                         buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "#29C71A");
                     }
-    
-                    checkIfWin(tile);
                 }
                 break;
             }
             else {
                 continue;
             }
-
         }
     }
-
 }
 
 function markTileO (e){
@@ -293,10 +294,13 @@ function markTileO (e){
     
                     Gameboard.tiles[tileIndex] = "O";
                     tile.classList.remove('hidden');
-                    displayMarks();
-    
+                    displayMarks(); 
+                    
                     removeEventTiles(markTileO);
                     addEventTiles(markTileX);
+
+                    checkIfWin();
+                    
     
                     if (getAfterColor(buttons.markOBtn) === "rgb(41, 199, 26)"){ // #29C71A .player-one
                         tile.classList.add('player-one');
@@ -309,8 +313,6 @@ function markTileO (e){
                         buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "");
                     }
     
-                    checkIfWin(tile);
-    
                 }
                 break;
             }
@@ -322,7 +324,7 @@ function markTileO (e){
     }
 }
 
-function checkIfWin(elem){
+function checkIfWin(){
 
     const tiles = document.querySelectorAll('.tile');
     tiles.forEach(tile => {
@@ -338,8 +340,9 @@ function checkIfWin(elem){
                     tile.classList.remove('win');
                     resetGame();
                 }, 4000);
-            }
 
+            } 
+            
         }
         else if (Gameboard.tiles[1] === Gameboard.tiles[4] && Gameboard.tiles[4] === Gameboard.tiles[7]){
 
@@ -354,7 +357,7 @@ function checkIfWin(elem){
                     resetGame();
                 }, 4000);
             }
-
+            
         }
         else if (Gameboard.tiles[2] === Gameboard.tiles[5] && Gameboard.tiles[5] === Gameboard.tiles[8]){
 
@@ -369,7 +372,7 @@ function checkIfWin(elem){
                     resetGame();
                 }, 4000);
             }
-
+            
         }
         else if (Gameboard.tiles[0] === Gameboard.tiles[1] && Gameboard.tiles[1] === Gameboard.tiles[2]){
 
@@ -384,7 +387,7 @@ function checkIfWin(elem){
                     resetGame();
                 }, 4000);
             }
-
+            
         }
         else if (Gameboard.tiles[0] === Gameboard.tiles[4] && Gameboard.tiles[4] === Gameboard.tiles[8]){
 
@@ -399,7 +402,7 @@ function checkIfWin(elem){
                     resetGame();
                 }, 4000);
             }
-
+           
         }
         else if (Gameboard.tiles[2] === Gameboard.tiles[4] && Gameboard.tiles[4] === Gameboard.tiles[6]){
 
@@ -414,7 +417,7 @@ function checkIfWin(elem){
                     resetGame();
                 }, 4000);
             }
-
+            
         }
         else if (Gameboard.tiles[3] === Gameboard.tiles[4] && Gameboard.tiles[4] === Gameboard.tiles[5]){
 
@@ -429,7 +432,7 @@ function checkIfWin(elem){
                     resetGame();
                 }, 4000);
             }
-
+            
         }
         else if (Gameboard.tiles[6] === Gameboard.tiles[7] && Gameboard.tiles[7] === Gameboard.tiles[8]){
 
@@ -443,9 +446,8 @@ function checkIfWin(elem){
                     tile.classList.remove('win');
                     resetGame();
                 }, 4000);
-                
             }
-
+        
         }
         else if (
             (Gameboard.tiles[0] === "X" || Gameboard.tiles[0] === "O") &&
@@ -466,8 +468,6 @@ function checkIfWin(elem){
                 tile.classList.remove('tie');
                 resetGame();
             }, 4000);
-
         }
-
-    });
+    })
 }
