@@ -81,6 +81,17 @@ buttons.hardAIBtn.addEventListener('click', displayGamePage);
 
 function displayGamePage(e){
     pages.gamePage.classList.add('active');
+
+    if (e.target === buttons.easyAIBtn){
+        game.ai.mode.easy = true;
+    }
+    else if (e.target === buttons.mediumAIBtn){
+        game.ai.mode.medium = true;
+    }
+    else if (e.target === buttons.hardAIBtn){
+        game.ai.mode.hard = true;
+    }
+
     buttons.markXBtn.setAttribute('tabindex', '0');
     buttons.markOBtn.setAttribute('tabindex', '0');
 
@@ -109,6 +120,11 @@ buttons.menuBtn.addEventListener('click', closeGamePage);
 
 function closeGamePage(e){
     pages.gamePage.classList.remove('active');
+
+    game.ai.mode.easy = false;
+    game.ai.mode.medium = false;
+    game.ai.mode.hard = false;
+
     buttons.markXBtn.removeAttribute('tabindex');
     buttons.markOBtn.removeAttribute('tabindex');
 
@@ -166,9 +182,41 @@ const boardTemplate = (() => {
     ]
 });
 
+function easyAI(markButton){
+    const currentBoardState = game.board;
+    const board = document.querySelectorAll('.tile');
+    const availMoves = game.board.filter(tile => typeof tile === "number");
+    const selectMove = availMoves[Math.floor(Math.random() * availMoves.length)];
+
+    if (markButton === buttons.markXBtn){
+        currentBoardState[selectMove] = "O";
+    }
+    else {
+        currentBoardState[selectMove] = "X";
+    }
+
+    for (const tile of board){
+        if (tile.getAttribute('data-index') != selectMove){
+            continue;
+        }
+        else {
+            tile.classList.add('player-two');
+            tile.classList.remove('hidden');
+            displayMarks();
+        }
+    }
+}
+
 const game = (() => {
     const board = boardTemplate();
-    return {board};
+    const mode = { easy: false, medium: false, hard: false}
+    const ai = { mode };
+    const turn = { player: false, ai: false};
+    return {
+        board,
+        ai,
+        turn,
+    };
 })();
 
 function displayMarks(){
@@ -256,22 +304,56 @@ function markTileX (e){
                     game.board[tileIndex] = "X";
                     tile.classList.remove('hidden');
                     displayMarks();
-                    
-                    removeEventTiles(markTileX);
-                    addEventTiles(markTileO);
-                    
-                    checkIfWin();
 
-                    if (getAfterColor(buttons.markXBtn) === "rgb(41, 199, 26)"){ // #29C71A .player-one
+                    if (game.ai.mode.easy){
+                        removeEventTiles(markTileX);
                         tile.classList.add('player-one');
+
+                        checkIfWin();
+
+                        if (checkIfWin() === true){
+                            return 0;
+                        }
+
                         buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "");
                         buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "#C71A1A");
-                    } 
-                    else {
-                        tile.classList.add('player-two'); // #C71A1A .player-two
-                        buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "");
-                        buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "#29C71A");
+
+                        setTimeout(() => {
+                            easyAI(buttons.markXBtn);
+                            checkIfWin();
+                        }, 1000);
+
+                        setTimeout(() => {
+                            if (checkIfWin() === true){
+                                return 0;
+                            }
+                            buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "#29C71A");
+                            buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "");
+                            addEventTiles(markTileX);
+                        }, 2000);
                     }
+                    else {
+                        removeEventTiles(markTileX);
+                        addEventTiles(markTileO);
+                    
+                        checkIfWin();
+
+                        if (checkIfWin() === true){
+                            return 0;
+                        }
+
+                        if (getAfterColor(buttons.markXBtn) === "rgb(41, 199, 26)"){ // #29C71A .player-one
+                            tile.classList.add('player-one');
+                            buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "");
+                            buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "#C71A1A");
+                        } 
+                        else {
+                            tile.classList.add('player-two'); // #C71A1A .player-two
+                            buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "");
+                            buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "#29C71A");
+                        }
+                    }
+                    
                 }
                 break;
             }
@@ -301,21 +383,53 @@ function markTileO (e){
                     game.board[tileIndex] = "O";
                     tile.classList.remove('hidden');
                     displayMarks();
-                    
-                    removeEventTiles(markTileO);
-                    addEventTiles(markTileX);
-                    
-                    checkIfWin();
-                    
-                    if (getAfterColor(buttons.markOBtn) === "rgb(41, 199, 26)"){ // #29C71A .player-one
+                    if (game.ai.mode.easy){
+                        removeEventTiles(markTileO);
                         tile.classList.add('player-one');
+
+                        checkIfWin();
+
+                        if (checkIfWin() === true){
+                            return 0;
+                        }
+
                         buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "#C71A1A");
                         buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "");
-                    } 
+
+                        setTimeout(() => {
+                            easyAI(buttons.markOBtn);
+                            checkIfWin();
+                        }, 1000);
+
+                        setTimeout(() => {
+                            if (checkIfWin() === true){
+                                return 0;
+                            }
+                            buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "");
+                            buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "#29C71A");
+                            addEventTiles(markTileO);
+                        }, 2000);
+                    }
                     else {
-                        tile.classList.add('player-two'); // #C71A1A .player-two
-                        buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "#29C71A");
-                        buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "");
+                        removeEventTiles(markTileO);
+                        addEventTiles(markTileX);
+                        
+                        checkIfWin();
+
+                        if (checkIfWin() === true){
+                            return 0;
+                        }
+                        
+                        if (getAfterColor(buttons.markOBtn) === "rgb(41, 199, 26)"){ // #29C71A .player-one
+                            tile.classList.add('player-one');
+                            buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "#C71A1A");
+                            buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "");
+                        } 
+                        else {
+                            tile.classList.add('player-two'); // #C71A1A .player-two
+                            buttons.markXBtn.style.setProperty("--x-after-bkgrnd", "#29C71A");
+                            buttons.markOBtn.style.setProperty("--o-after-bkgrnd", "");
+                        }
                     }
                 }
                 break;
@@ -328,7 +442,7 @@ function markTileO (e){
 }
 
 function checkIfWin(){
-
+    let condition = false;
     const tiles = document.querySelectorAll('.tile');
     tiles.forEach(tile => {
         if (game.board[0] === game.board[3] && game.board[3] === game.board[6]){
@@ -343,7 +457,7 @@ function checkIfWin(){
                     tile.classList.remove('win');
                     resetGame();
                 }, 4000);
-
+                condition = true;
             } 
             
         }
@@ -359,6 +473,7 @@ function checkIfWin(){
                     tile.classList.remove('win');
                     resetGame();
                 }, 4000);
+                condition = true;
             }
             
         }
@@ -374,6 +489,7 @@ function checkIfWin(){
                     tile.classList.remove('win');
                     resetGame();
                 }, 4000);
+                condition = true;
             }
             
         }
@@ -389,6 +505,7 @@ function checkIfWin(){
                     tile.classList.remove('win');
                     resetGame();
                 }, 4000);
+                condition = true;
             }
             
         }
@@ -404,6 +521,7 @@ function checkIfWin(){
                     tile.classList.remove('win');
                     resetGame();
                 }, 4000);
+                condition = true;
             }
            
         }
@@ -419,6 +537,7 @@ function checkIfWin(){
                     tile.classList.remove('win');
                     resetGame();
                 }, 4000);
+                condition = true;
             }
             
         }
@@ -434,6 +553,7 @@ function checkIfWin(){
                     tile.classList.remove('win');
                     resetGame();
                 }, 4000);
+                condition = true;
             }
             
         }
@@ -449,6 +569,7 @@ function checkIfWin(){
                     tile.classList.remove('win');
                     resetGame();
                 }, 4000);
+                condition = true;
             }
         
         }
@@ -471,6 +592,11 @@ function checkIfWin(){
                 tile.classList.remove('tie');
                 resetGame();
             }, 4000);
+            condition = true;
+        }
+        else {
+            condition = false;
         }
     })
+    return condition;
 }
