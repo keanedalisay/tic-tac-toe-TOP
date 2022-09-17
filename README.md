@@ -22,6 +22,8 @@ https://keanedalisay.github.io/tic-tac-toe-TOP/
 
 And here's a preview of me winning a game against the AI:
 
+![image](https://user-images.githubusercontent.com/101083161/190833484-0ca9b484-2ba3-46b0-9ca3-eb99b9d4f188.png)
+
 ## License
 
 Copyright (c) 2022 Keane Dalisay
